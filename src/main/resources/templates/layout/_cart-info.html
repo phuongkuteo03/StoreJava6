@@ -1,0 +1,16 @@
+<div xmlns:th="http://www.thymeleaf.org">
+
+    <div class="card my-2 shadow p-3 mb-5 bg-body rounded">
+        <div class="card-header text-center text-light bg-success rounded">
+            <a th:href="@{/cart/view}" style="text-decoration: none; color: white"
+                onmouseover="this.style.color='black';" onmouseout="this.style.color='white'">
+                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
+            </a>
+        </div>
+        <div class="card-body text-center" style="color: dimgray;">
+            {{cart.count}} items
+            <b> X </b>
+            ${{cart.amount | number : 2}}</a>
+        </div>
+    </div>
+</div>

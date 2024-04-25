@@ -1,0 +1,9 @@
+<div xmlns:th="http://www.thymeleaf.org" class="mb-3">
+    <hr />
+    <div class="ps-3 text-success"><i class="fa-solid fw-bold fa-bars"></i> <b style="font-size: larger;">DANH MỤC</b>
+    </div>
+    <div class="list-group list-group-flush mt-2">
+        <a th:each="c : ${cates}" th:href="@{|/product/list?cid=${c.id}|}"
+            class="list-group-item list-group-item-action">[[${c.name}]]</a>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+    <main class="row">
+        <hr>
+        <h2 class="text-center fw-bold mb-3 text-success">SẢN PHẨM</h2>
+        <div th:each="p: ${items.content}" class="col-sm-4">
+            <div class="card text-center mt-4" onmouseover="this.style.boxShadow='10px 10px 25px grey';"
+                onmouseout="this.style.boxShadow='none'">
+                <div class="card-header">
+                    <div class="card-title" th:utext="${p.name}" style="font-size: smaller;"></div>
+                </div>
+                <div class="card-body">
+                    <a th:href="@{|/product/detail/${p.id}|}">
+                        <img th:src="@{|/assets/images/${p.image}|}" style="height: 150px; max-width: 95%;">
+                    </a>
+                </div>
+                <div class="card-footer">
+                    <b class="float-start">$[[${p.price}]]</b>
+                    <button th:attr="ng-click=@{|cart.add(${p.id})|}" class="btn btn-success float-end">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="text-center my-4">
+            <a th:href="@{|/product/list?p=0|}" class="btn btn-danger">
+                <i class="fa-solid fa-backward-step"></i>
+            </a>
+            <a th:href="@{|/product/list?p=${prev_pager}|}" class="btn btn-primary">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <button class="btn btn-success"><b th:text="${items.number + 1}"></b> <b>Of</b> <b
+                    th:text="${items.totalPages}"></b></button>
+
+            <a th:href="@{|/product/list?p=${next_pager}|}" class="btn btn-primary">
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a th:href="@{|/product/list?p=${items.totalPages - 1}|}" class="btn btn-danger">
+                <i class="fa-solid fa-forward-step"></i>
+            </a>
+        </div>
+    </main>
+</body>
+
+</html>
